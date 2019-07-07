@@ -1,201 +1,60 @@
-## バトル進行モデルの解説
+Privacy Policy
+Takase Ryohei built the Beyond the Field app as a Free app. This SERVICE is provided by Takase Ryohei at no cost and is intended for use as is.
 
-図1: 全体図
+This page is used to inform visitors regarding my policies with the collection, use, and disclosure of Personal Information if anyone decided to use my Service.
 
-```mermaid
-graph TD
+If you choose to use my Service, then you agree to the collection and use of information in relation to this policy. The Personal Information that I collect is used for providing and improving the Service. I will not use or share your information with anyone except as described in this Privacy Policy.
 
-subgraph 遷移元となる状態が決まっている
-start>Start]
-i[InitialState<br><br>お互いのプレイヤーの準備完了を待つ状態]
-st[StrategyState<br><br>お互いのプレイヤーの初期配置完了を待つ状態]
-ct["CointossState<br><br>コイントスを行った（バトル開始を待つ）状態"]
-bs["BattleStartState<br><br>バトルが開始された（ターン開始を待つ）状態"]
-ts["TurnStartState<br><br>ターンが開始された(ドロー開始を待つ)状態"]
-d["DrawState<br><br>ターンプレイヤーのドロー完了を待つ状態"]
-m["MainState<br><br>ターン終了を待つ状態"]
-tf["TurnFinishState<br><br>ターンが終了した（次のターンの開始を待つ）状態"]
-zu2((図2へ))
-end
+The terms used in this Privacy Policy have the same meanings as in our Terms and Conditions, which is accessible at Beyond the Field unless otherwise defined in this Privacy Policy.
 
-start-->i
-i-->|Initial|i
-i-->|Initial|st
-st-->|Srrategy|st
-st-->|Srrategy|ct
-ct-->|Cointoss|bs
-bs-->|TurnStart|ts
-ts-->|Draw|d
-d-->|Draw|d
-d-->|Draw|m
-m-->|TurnFinish|tf
-tf-->|TurnStart|ts
+Information Collection and Use
 
-m-->zu2
+For a better experience, while using our Service, I may require you to provide us with certain personally identifiable information. The information that I request will be retained on your device and is not collected by me in any way.
 
-```
+The app does use third party services that may collect information used to identify you.
 
-```mermaid
-graph TD
+Link to privacy policy of third party service providers used by the app
 
-subgraph どの状態からも遷移できる
-any[AnyState]
-bf["BattleFinishState<br><br>バトルが終了した状態"]
-ei["EffectEffectInterruptState<br><br>カードの効果が発動条件を満たした<br>（発動するかどうかの決定を待つ）状態"]
-ed["EffectDeclareState<br><br>カードの効果を発動した<br>（発動直前の状態への復帰完了を待つ）状態"]
-finish>Finish]
-end
+Google Play Services
+Firebase Analytics
+Fabric
+Crashlytics
+Log Data
 
-any-->|BattleFinish|bf
-bf-->finish
-any-->|EffectInturrupt|ei
-ei-->|EffectDeclare|ed
-ed-->|EffectFinish|any
-```
+I want to inform you that whenever you use my Service, in a case of an error in the app I collect data and information (through third party products) on your phone called Log Data. This Log Data may include information such as your device Internet Protocol (“IP”) address, device name, operating system version, the configuration of the app when utilizing my Service, the time and date of your use of the Service, and other statistics.
 
-図2: MainStateの詳細
-```mermaid
-graph TD
+Cookies
 
-m["MainState<br><br>ターン終了を待つ状態"]
-attack((図3: AttackState<br><br>アタック完了を待つ状態))
-move((図4: MoveState<br><br>ムーブ完了を待つ状態))
-summon((図5: SummonState<br><br>サモン完了を待つ状態))
-direct((図6: DirectState<br><br>ダイレクト完了を待つ状態))
+Cookies are files with a small amount of data that are commonly used as anonymous unique identifiers. These are sent to your browser from the websites that you visit and are stored on your device's internal memory.
 
-m-->attack
-attack-->m
+This Service does not use these “cookies” explicitly. However, the app may use third party code and libraries that use “cookies” to collect information and improve their services. You have the option to either accept or refuse these cookies and know when a cookie is being sent to your device. If you choose to refuse our cookies, you may not be able to use some portions of this Service.
 
-m-->move
-move-->m
+Service Providers
 
-m-->summon
-summon-->m
+I may employ third-party companies and individuals due to the following reasons:
 
-m-->direct
-direct-->m
+To facilitate our Service;
+To provide the Service on our behalf;
+To perform Service-related services; or
+To assist us in analyzing how our Service is used.
+I want to inform users of this Service that these third parties have access to your Personal Information. The reason is to perform the tasks assigned to them on our behalf. However, they are obligated not to disclose or use the information for any other purpose.
 
-```
+Security
 
-図3: AttackStateの詳細
-```mermaid
-graph TD
+I value your trust in providing us your Personal Information, thus we are striving to use commercially acceptable means of protecting it. But remember that no method of transmission over the internet, or method of electronic storage is 100% secure and reliable, and I cannot guarantee its absolute security.
 
-m["MainState<br><br>ターン終了を待つ状態"]
-ad1["AttackDeclareState<br><br>アタック宣言を完了した（ダメージ計算の開始を待つ）状態"]
-ad2["AttackDamageState<br><br>ダメージ計算を完了した（カード破壊の開始を待つ）状態"]
-ad3["AttackDestroyState<br><br>カード破壊を完了した（MainStateへの復帰を待つ）状態"]
+Links to Other Sites
 
-m-->|AttackDeclare|ad1
-ad1-->|AttackDamage|ad2
-ad2-->|AttackDestroy|ad3
-ad3-->|AttackFinish|m
+This Service may contain links to other sites. If you click on a third-party link, you will be directed to that site. Note that these external sites are not operated by me. Therefore, I strongly advise you to review the Privacy Policy of these websites. I have no control over and assume no responsibility for the content, privacy policies, or practices of any third-party sites or services.
 
+Children’s Privacy
 
-```
+These Services do not address anyone under the age of 13. I do not knowingly collect personally identifiable information from children under 13. In the case I discover that a child under 13 has provided me with personal information, I immediately delete this from our servers. If you are a parent or guardian and you are aware that your child has provided us with personal information, please contact me so that I will be able to do necessary actions.
 
-図4: MoveStateの詳細
+Changes to This Privacy Policy
 
-```mermaid
-graph TD
+I may update our Privacy Policy from time to time. Thus, you are advised to review this page periodically for any changes. I will notify you of any changes by posting the new Privacy Policy on this page. These changes are effective immediately after they are posted on this page.
 
-m["MainState<br><br>ターン終了を待つ状態"]
-md["MoveDeclareState<br><br>ムーブ宣言を完了した（リアクションの開始を待つ）状態"]
-check{移動可能な<br>セルは<br>残っているか}
-mrt["MoveRetryState<br><br>リアクションされた（移動先の再決定を待つ）状態"]
-mre["MoveResultState<br><br>カードの移動を完了した（MainStateへの復帰を待つ）状態"]
+Contact Us
 
-
-m-->|MoveDeclare|md
-md-->|MoveReactSummon<br>MoveReactFeint|check
-check-->|yes|mrt
-check-->|no|mre
-md-->|MoveReactNone|mre
-mrt-->|MoveRetry|mre
-mre-->|MoveFinish|m
-
-```
-
-図5: SummonStateの詳細
-
-```mermaid
-graph TD
-
-m["MainState<br><br>ターン終了を待つ状態"]
-sd["SummonDeclareState<br><br>サモン宣言を完了した（MainTimeへの復帰を待つ）状態"]
-
-sd-->|SummonDeclare|m
-m-->|SummonFinish|sd
-
-```
-
-図6: DirectStateの詳細
-
-```mermaid
-graph TD
-m["MainState<br><br>ターン終了を待つ状態"]
-dd1["DirectDeclareState<br><br>ダイレクト宣言を完了した（ダメージ計算を待つ）状態"]
-dd2["DirectDamageSate<br><br>ダメージ計算を完了した（MainStateへの復帰を待つ状態）"]
-
-m-->|DirectDeclare|dd1
-dd1-->|DirectDamage|dd2
-dd2-->|DirectFinish|m
-```
-
-## 修正前のバトル進行モデル
-
-```mermaid
-graph TD
-
-subgraph サーバ
-photon((Photonサーバ))
-flask((Flaskサーバ))
-end
-
-subgraph Hostクライント
-h1[UI管理]
-h2(バトルの進行を表すFSM)
-end
-
-subgraph Guestクライント
-g1[UI管理]
-g2(バトルの進行を表すFSM)
-end
-
-g2-->|操作結果を伝える|g1
-h2-->|操作結果を伝える|h1
-h1-->|"操作（ドロー、移動、etc）を入力する"|photon
-g1-->|"操作（ドロー、移動、etc）を入力する"|photon
-photon-->|操作をブロードキャストする|h2
-photon-->|操作をブロードキャストする|g2
-h1-->|操作履歴を記録する|flask
-```
-
-
-## 高修正したいバトル進行モデル
-
-```mermaid
-graph TD
-
-subgraph サーバ
-photon((Photonサーバ))
-flask((Flaskサーバ))
-fsm(バトルの進行を表すFSM)
-end
-
-subgraph Hostクライント
-h1[UI管理]
-end
-
-subgraph Guestクライント
-g1[UI管理]
-end
-
-fsm-->|操作結果を伝える|g1
-fsm-->|操作結果を伝える|h1
-h1-->|"操作（ドロー、移動、etc）を入力する"|photon
-g1-->|"操作（ドロー、移動、etc）を入力する"|photon
-photon-->|操作をブロードキャストする|fsm
-photon-->|操作をブロードキャストする|fsm
-h1-->|操作履歴を記録する|flask
-```
+If you have any questions or suggestions about my Privacy Policy, do not hesitate to contact me at https://twitter.com/BTF_TCG.
